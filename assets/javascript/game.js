@@ -1,15 +1,88 @@
-//variables I guess
+var randomNumber = Math.floor(Math.random()*(120 - 19 + 1) + 19);
+var winCount = 0;
+var loseCount = 0;
+var blue = Math.floor(Math.random()*(12 - 1 + 1) + 1);
+var pink = Math.floor(Math.random()*(12 - 1 + 1) + 1);
+var green = Math.floor(Math.random()*(12 - 1 + 1) + 1);
+var purple = Math.floor(Math.random()*(12 - 1 + 1) + 1);
+var userScore = 0;
 
-//to start game should show a random number 
 
-//gems assigned a specific number
+function shuffleCrystalValues(){
+	blue = Math.floor(Math.random()*(12 - 1 + 1) + 1);
+	pink = Math.floor(Math.random()*(12 - 1 + 1) + 1);
+	green = Math.floor(Math.random()*(12 - 1 + 1) + 1);
+	purple = Math.floor(Math.random()*(12 - 1 + 1) + 1);
+}
 
-//when clicked the gem adds to the player's score
 
-//game ends if the score is the same as the random number
+function gamePlay(){
+	if(userScore === randomNumber){
+		winCount++;
+		$('#win-counter').text(winCount);
+        $('#win-or-lose').text('You win!');
+        alert
+		randomNumber = Math.floor(Math.random()*(120 - 19 + 1) + 19);
+		$('#random-number').text(randomNumber);
+		userScore = 0;
+		$('#current-score-counter').text(userScore);
+		shuffleCrystalValues();
+	} else if(userScore > randomNumber){
+		loseCount++;
+		$('#loss-counter').html(loseCount);
+		$('#win-or-lose').text('You lose!');
+		randomNumber = Math.floor(Math.random()*(120 - 19 + 1) + 19);
+		$('#random-number').text(randomNumber);
+		userScore = 0;
+		$('#current-score-counter').text(userScore);
+		shuffleCrystalValues();
+	}
+}
 
-//player loses if the score is higher that the random number 
 
-//show wins and losses
 
-//game resets when win/lose 
+$('#random-number').text(randomNumber);
+
+
+
+$('#blue').on('click', function(){
+	userScore += blue;
+	$('#current-score-counter').text(userScore);
+	gamePlay();
+});
+
+
+$('#pink').on('click', function(){
+	userScore += pink;
+	$('#current-score-counter').text(userScore);
+	gamePlay();
+});
+
+
+$('#green').on('click', function(){
+	userScore += green;
+	$('#current-score-counter').text(userScore);
+	gamePlay();
+});
+
+
+$('#purple').on('click', function(){
+	userScore += purple;
+	$('#current-score-counter').text(userScore);
+	gamePlay();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
